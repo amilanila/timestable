@@ -12,22 +12,73 @@
     <body>
        <div class="app">
             <br>
-            <input type="text" class="test-input" value="hello"/>
+            
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"
+            	style="width:250px; height:100PX; border:1px solid"></div>
+			<br>
+			<img id="drag1" src="../../img/img_logo.gif" draggable="true" ondragstart="drag(event)" 
+				width="75px" height="75px">
+            
             <div class="btn-group">
             	<a class="btn btn-primary" href="../../main-table.html">Main</a>
             	<a class="btn btn-primary" href="../table/times_1.html">Table</a>
             </div>
         </div>
 
-		<script type="text/javascript" src="../../jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="../../jquery.mobile-1.3.1.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="../../js/jquery.mobile-1.3.1.min.js"></script>
         <script type="text/javascript" src="../../cordova-2.7.0.js"></script>
         <script type="text/javascript" src="../../js/index.js"></script>
+        <script type="text/javascript" src="../../js/jquery.ui.touch-punch.min.js"></script>
         
         <script type="text/javascript">
+	        function allowDrop(ev){
+	        	ev.preventDefault();
+	        }
+	
+	        function drag(ev){
+	        	ev.dataTransfer.setData("Text",ev.target.id);
+	        }
+	
+	        function drop(ev){
+	        	ev.preventDefault();
+	        	var data=ev.dataTransfer.getData("Text");
+	        	ev.target.appendChild(document.getElementById(data));
+	        }
+	        
+	        function touchHandler(event) {
+				var touches = event.changedTouches,
+				first = touches[0],
+			    type = "";
+				
+				if(event.tupe == "touchmove")){
+					alert("touchmove");
+				}
+			    switch(event.type){
+			    	case "touchstart": type = "mousedown"; break;
+			    	case "touchmove":  type="mousemove"; break;        
+			    	case "touchend":   type="mouseup"; break;
+			    	default: return;
+				}
+				var simulatedEvent = document.createEvent("MouseEvent");
+				simulatedEvent.initMouseEvent(type, true, true, window, 1,
+			                          first.screenX, first.screenY,
+			                          first.clientX, first.clientY, false,
+			                          false, false, false, 0/*left*/, null);
+	
+				first.target.dispatchEvent(simulatedEvent);
+				event.preventDefault();
+			}
+	
+			function init(){
+			   	document.addEventListener("touchstart", touchHandler, true);
+			   	document.addEventListener("touchmove", touchHandler, true);
+			   	document.addEventListener("touchend", touchHandler, true);
+			   	document.addEventListener("touchcancel", touchHandler, true);    
+			}        		
+
         	jQuery(document).ready(function($){
- 	    		var x = $('.test-input').val();
-         		alert(x);
+        		init();	
         	});
         	app.initialize();
         </script>
