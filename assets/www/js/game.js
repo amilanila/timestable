@@ -1,5 +1,6 @@
 jQuery(document).ready(function($){
-
+//	app.initialize();
+	
     $('#correct').hide();
     $('#incorrect').hide();
 

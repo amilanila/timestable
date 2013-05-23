@@ -52,8 +52,8 @@ div .answer {
 
 div .droppable {
 	float: left;	
-	width: 120px;
-	height: 120px;
+	width: 100px;
+	height: 100px;
 	border: 2px solid;
 	border-radius: 15px;
 	text-align: center;
@@ -73,8 +73,8 @@ div .occupied {
 
 div .draggable {
 	float: left;	
-	width: 100px;
-	height: 100px;
+	width: 90px;
+	height: 90px;
 	border: 2px solid;
 	border-radius: 15px;
 	text-align: center;
