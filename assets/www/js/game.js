@@ -1,9 +1,15 @@
 jQuery(document).ready(function($){
 
+    $('#correct').hide();
+    $('#incorrect').hide();
+
 	$('.draggable').draggable();
 	$('#droppybox').droppable({
 		drop: function(event, ui){
-			$(this).removeClass('vacant').addClass('occupied').disabled();
+			$(this).removeClass('vacant').addClass('occupied');
+            $(ui.draggable).detach().css({top: 0,left: 0}).appendTo(this);
+            disableAnswering();
+            checkAnswer(this);
 		}
 	});    
 
@@ -11,19 +17,36 @@ jQuery(document).ready(function($){
 });
 
 var multipliees = shuffle([1,2,3,4,5,6,7,8,9,10,11,12]);
+var answer = 0;
+
+function checkAnswer(elem){
+    var selectedAns = $(elem).children('.draggable ').children('.answer-given').text();
+    if(selectedAns == answer){
+        $('#correct').show();
+        $('#incorrect').hide();
+    } else {
+        $('#correct').hide();
+        $('#incorrect').show();
+    }
+
+};
+
+function disableAnswering(){
+    $('.draggable').draggable('disable');    
+};
 
 function question(){
     var multiplier = getParameterByName('multiplier');
     var multipliee = multipliees[0];
-    var answer = parseInt(multiplier) * parseInt(multipliee);
+    answer = parseInt(multiplier) * parseInt(multipliee);
 
     askQuestion(multiplier, multipliee);
     var answers = getSuggestions(multiplier, multipliee);
 
-    $('.answer-one').text(answers[0]);
-    $('.answer-two').text(answers[1]);
-    $('.answer-three').text(answers[2]);
-    $('.answer-four').text(answers[3]);
+    $('.answer-given.one').text(answers[0]);
+    $('.answer-given.two').text(answers[1]);
+    $('.answer-given.three').text(answers[2]);
+    $('.answer-given.four').text(answers[3]);
 };
 
 function askQuestion(multiplier, multipliee){
