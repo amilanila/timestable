@@ -7,7 +7,10 @@ jQuery(document).ready(function($){
         if(questionIndex < 12){                        
             init();            
             question();                    
-        }        
+        } 
+        if(questionIndex == 11){
+            $('.next-question').hide();           
+        }       
     });
     
     question();    
@@ -33,7 +36,7 @@ function init(){
         drop: function(event, ui){
             $(this).removeClass('vacant').addClass('occupied');
             $(ui.draggable).detach().css({top: 0,left: 0}).appendTo(this);
-            //disableAnswering();
+            disableAnswering();
             checkAnswer(this);
         }
     }); 
@@ -48,7 +51,9 @@ function checkAnswer(elem){
         $('#correct').hide();
         $('#incorrect').show();
     }
-
+    if(questionIndex == 11){
+        $('.total-marks').removeClass('hidden'); 
+    }
 };
 
 function disableAnswering(){
