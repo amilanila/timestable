@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
 var questionIndex = 0;
 var multipliees = shuffle([1,2,3,4,5,6,7,8,9,10,11,12]);
 var answer = 0;
-var score = 0;
+var score = 1;
 
 function init(){
     $('.draggable').remove();
