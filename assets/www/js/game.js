@@ -1,5 +1,4 @@
 jQuery(document).ready(function($){
-//	app.initialize();
 	
     init();
 
@@ -13,6 +12,10 @@ jQuery(document).ready(function($){
         }       
     });
     
+    $('.total-marks').click(function(){
+        $('.my-score').text("You have scored " + score + "/12"); 
+    });
+    
     question();    
 });
 
@@ -20,6 +23,7 @@ jQuery(document).ready(function($){
 var questionIndex = 0;
 var multipliees = shuffle([1,2,3,4,5,6,7,8,9,10,11,12]);
 var answer = 0;
+var score = 0;
 
 function init(){
     $('.draggable').remove();
@@ -47,6 +51,7 @@ function checkAnswer(elem){
     if(selectedAns == answer){
         $('#correct').show();
         $('#incorrect').hide();
+        score = score + 1;
     } else {
         $('#correct').hide();
         $('#incorrect').show();
