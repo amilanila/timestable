@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="../../css/times.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-responsive.min.css" />
+        <title>Times Table</title>
+    </head>
+    <body>
+        <div class="app">
+        	<br>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">1</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer1">1</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">2</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer2">2</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">3</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer3">3</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">4</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer4">4</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">5</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer5">5</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">6</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer6">6</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">7</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer7">7</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">8</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer8">8</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">9</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer9">9</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">10</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer10">10</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">11</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer11">11</span></div>
+            </div>
+            <div class="row-fluid">
+            	<div class="number-box scale"><span class="span-multiplier"></span></div><div class="operator">X</div><div class="number-box number">12</div><div class="operator"><span>=</span></div><div class="answer-box answer"><span class="answer12">12</span></div>
+            </div>
+            <br>
+            <div class="btn-group">
+            	<a class="btn btn-primary" href="../../main-table.html">Main</a>
+            	<a class="btn btn-success do-test" href="#">Test</a>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="../../js/game.js"></script>        
+        <script type="text/javascript" src="../../js/jquery.ui.touch-punch.min.js"></script>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                
+                question();    
+            });
+
+            function init(){
+                var multiplier = getParameterByName('multiplier');
+                $('.span-multiplier').text(multiplier);
+
+                $.each($('.answer'), function(i, val){
+                    i++;
+                    var cls = '.answer'+ i;      
+                    $(cls).text(multiplier * i);
+                });
+
+                $('.do-test').click(function(){                    
+                    location.href="../game/game.html?multiplier=" + multiplier;
+                });
+            }
+
+            function getParameterByName(name){
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)", 
+                    regex = new RegExp( regexS ),
+                    results = regex.exec( window.location.href );
+                
+                if( results == null ){
+                    return "";
+                } else {
+                    return decodeURIComponent(results[1].replace(/\+/g, " "));
+                }
+            };
+        </script>
+    </body>
+</html>
