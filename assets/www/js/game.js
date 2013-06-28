@@ -54,12 +54,21 @@ function checkAnswer(elem){
         score = score + 1;
     } else {
         $('#correct').hide();
-        $('#incorrect').show();
+        $('#incorrect').show();        
+        highlighCorrectAnswer();
     }
     if(questionIndex == 11){
         $('.total-marks').removeClass('hidden'); 
     }
 };
+
+function highlighCorrectAnswer(){
+    $.each($('.answer-given'), function(){
+        if($(this).text() == answer){
+            $(this).parent().css('background-color', '#00FF00');
+        }
+    });
+}
 
 function disableAnswering(){
     $('.draggable').draggable('disable');    
