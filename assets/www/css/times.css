@@ -83,3 +83,9 @@ div .draggable {
 	margin-left: 5px;
 	background-color: #75FFFF;
 }
+
+.btn-custom {
+	width: 200px;
+	height: 75px;
+	margin: 10px;
+}
