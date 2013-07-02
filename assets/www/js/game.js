@@ -3,9 +3,10 @@ jQuery(document).ready(function($){
     init();
 
     $('.next-question').click(function(){
-        if(questionIndex < 12){                        
+        if(questionIndex < 12 && answered){                        
             init();            
-            question();                    
+            question();   
+            answered = false;
         } 
         if(questionIndex == 11){
             $('.next-question').hide();           
@@ -24,6 +25,7 @@ var questionIndex = 0;
 var multipliees = shuffle([1,2,3,4,5,6,7,8,9,10,11,12]);
 var answer = 0;
 var score = 1;
+var answered = false;
 
 function init(){
     $('.draggable').remove();
@@ -42,6 +44,7 @@ function init(){
             $(ui.draggable).detach().css({top: 0,left: 0}).appendTo(this);
             disableAnswering();
             checkAnswer(this);
+            answered = true;
         }
     }); 
 }

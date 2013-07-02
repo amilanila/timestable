@@ -89,3 +89,22 @@ div .draggable {
 	height: 75px;
 	margin: 10px;
 }
+
+.btn-custom1 {
+	width: 150px;
+	height: 50px;
+	margin-right: 2px;
+	margin-top: 2px;
+}
+
+.btn-custom2 {
+	width: 100px;
+	height: 75px;
+	margin: 10px;
+}
+
+.page-middle {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+}
