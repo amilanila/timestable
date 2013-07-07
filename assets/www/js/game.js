@@ -14,7 +14,21 @@ jQuery(document).ready(function($){
     });
     
     $('.total-marks').click(function(){
-        $('.my-score').text("You have scored " + score + "/12"); 
+    	var msg;
+    	if(score > 10){
+    		msg = "Your score is " + score + "/12. Excellent job." 
+    		$('.my-score').text(msg);
+    		$('.my-score').addClass("alert").addClass("alert-success");
+    		
+    	} else if(score >= 8 && score <= 10){
+    		msg = "Your score is " + score + "/12. Good job."
+    		$('.my-score').text(msg);
+    		$('.my-score').addClass("alert").addClass("alert-info");
+    	} else {
+    		msg = "Your score is " + score + "/12. Try again."
+    		$('.my-score').text(msg);
+    		$('.my-score').addClass("alert").addClass("alert-error");
+    	}
     });
     
     question();    
